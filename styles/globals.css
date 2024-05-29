@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 8, 32, 50;
+  --background-end-rgb: 8, 32, 50;
+}
+
+.app {
+    @apply relative z-10 flex justify-center items-center flex-col max-w-7xl mx-auto sm:px-16 px-6;
+  }
+
+  
+  @media (min-width: 925px) {
+    .app > :not(nav) {
+      @apply flex-1 flex justify-between gap-5;
+    }
+  }
+
+
+/* Nav Component */
+.logo_text {
+  @apply max-sm:hidden font-satoshi font-semibold text-lg tracking-wide;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+
+.bg-primary-orange {
+  transition: width 2s ease-out;
+}
