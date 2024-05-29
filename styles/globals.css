@@ -38,3 +38,7 @@ body {
 .bg-primary-orange {
   transition: width 2s ease-out;
 }
+
+input {
+  color: black;
+}
