@@ -10,7 +10,7 @@ const FolderTree = ({ folders }) => {
         <li key={index}>
           <div className="flex gap-1">
             <BsFolder className="text-lg" style={{ marginTop: "2px" }} />
-            <div>{folder.name}</div>
+            <p>{folder.name}</p>
           </div>
           {folder.subfolders.folders.length > 0 && (
             <FolderTree folders={folder.subfolders.folders} />
