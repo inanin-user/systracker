@@ -1,24 +1,26 @@
 import Nav from "@/components/Nav"
 import "@/styles/globals.css"
 import Providers from "./Providers"
+import { createClient } from "@/utils/supabase/server"
 
 export const metadata = {
   title: "SysTracker",
   description: "Track CUST Link System data",
   icons: {
-    icon: "/assets/icons/favicon.ico"
-  }
+    icon: "/assets/icons/favicon.ico",
+  },
 }
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
+  const supabase = createClient()
+  const { data, error } = await supabase.auth.getUser()
+
   return (
     <html lang="en">
       <body>
+        <Nav data={data} />
         <Providers>
-        <main className="app">
-          <Nav />
-          {children}
-        </main>
+          <main className="app">{children}</main>
         </Providers>
       </body>
     </html>

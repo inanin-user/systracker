@@ -13,7 +13,9 @@ module.exports = {
       },
       colors: {
         'primary-orange': '#FF5722',
-        'navy': '#334756'
+        'dark-orange': '#9B3922',
+        'navy': '#334756',
+        'dark-blue': '#001C30'
       }
     },
   },

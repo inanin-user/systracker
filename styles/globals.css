@@ -8,16 +8,6 @@
   --background-end-rgb: 8, 32, 50;
 }
 
-.app {
-    @apply relative z-10 flex justify-center items-center flex-col max-w-7xl mx-auto sm:px-16 px-6;
-  }
-
-  
-  @media (min-width: 925px) {
-    .app > :not(nav) {
-      @apply flex-1 flex justify-between gap-5;
-    }
-  }
 
 
 /* Nav Component */
@@ -33,6 +23,14 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+  
+    @apply relative z-10 flex justify-center items-center flex-col max-w-7xl mx-auto sm:px-16 px-6;
+}
+
+@media (min-width: 925px) {
+  .home {
+    @apply flex-1 flex justify-between gap-5;
+  }
 }
 
 .bg-primary-orange {
@@ -42,3 +40,20 @@ body {
 input {
   color: black;
 }
+
+.outline_btn {
+  @apply rounded-full border border-white bg-transparent py-1.5 px-5 text-white transition-all hover:border-primary-orange hover:bg-primary-orange hover:text-white text-center text-sm font-inter flex items-center justify-center;
+}
+
+.white_btn {
+  @apply rounded-full border border-white py-1.5 px-5 text-white transition-all hover:bg-white hover:text-black text-center text-sm font-inter flex items-center justify-center;
+}
+
+.dropdown {
+  @apply absolute right-0 top-full mt-3 w-full p-5 rounded-lg bg-white min-w-[210px] flex flex-col gap-2 justify-end items-end;
+}
+
+form input {
+  @apply p-1 rounded-lg
+}
+

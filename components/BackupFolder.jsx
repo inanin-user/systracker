@@ -1,19 +1,25 @@
 "use client"
 import { useFolderDetails } from "@/app/services/queries"
-import React from "react"
+import React, { useState } from "react"
 import { BsFolder } from "react-icons/bs"
+import DetailModal from "./DetailModal"
 
-const FolderTree = ({ folders }) => {
+const FolderTree = ({ folders, open, setCurrentPath }) => {
   return (
     <ul className="ml-3">
       {folders?.map((folder, index) => (
         <li key={index}>
           <div className="flex gap-1">
             <BsFolder className="text-lg" style={{ marginTop: "2px" }} />
-            <p>{folder.name}</p>
+            <p className="cursor-pointer" onClick={() => {
+              open()
+              setCurrentPath(folder.path)
+              }}>
+              {folder.name}
+            </p>
           </div>
           {folder.subfolders.folders.length > 0 && (
-            <FolderTree folders={folder.subfolders.folders} />
+            <FolderTree setCurrentPath={setCurrentPath} folders={folder.subfolders.folders} open={open} />
           )}
         </li>
       ))}
@@ -24,6 +30,11 @@ const FolderTree = ({ folders }) => {
 const BackupFolder = ({ server }) => {
   const folderDetailsQuery = useFolderDetails(server)
   const { data: folderData, error, isLoading } = folderDetailsQuery
+
+  const [detailModal, setDetailModal] = useState(false)
+  const [currentPath, setCurrentPath] = useState("")
+
+  console.log(folderData)
 
   if (isLoading)
     return (
@@ -37,7 +48,12 @@ const BackupFolder = ({ server }) => {
       <h1 className="text-lg mb-3">
         Folder Structure (D:\backup_202405\daily_{server})
       </h1>
-      <FolderTree folders={folderData?.folders} />
+      <FolderTree
+        folders={folderData?.folders}
+        open={() => setDetailModal(true)}
+        setCurrentPath={setCurrentPath}
+      />
+      <DetailModal server={server} currentPath={currentPath} open={detailModal} onClose={() => setDetailModal(false)} />
     </div>
   )
 }

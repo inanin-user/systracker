@@ -8,3 +8,7 @@ export function useDiskSpace() {
 export function useFolderDetails(server) {
     return useSWR(`/folder-details?server=${server}`)
 }
+
+export function useFolderSize(path) {
+    return useSWR(`/folder-size?path=${path}`)
+}

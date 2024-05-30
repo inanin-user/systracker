@@ -47,7 +47,9 @@ const Diskspace = () => {
               <div className="bg-white w-full h-3 rounded-lg mt-2">
                 <div
                   style={{ width: `${usedPercentage}%` }}
-                  className="bg-primary-orange h-3 rounded-lg tooltip"
+                  className={`${
+                    usedPercentage >= 90 ? "bg-red-600" : "bg-primary-orange"
+                  } h-3 rounded-lg tooltip`}
                 />
               </div>
             </React.Fragment>
