@@ -12,7 +12,7 @@ export default function Home() {
         <CurrentBackupFolder server="nps" />
       </div>
       <h1 className="text-3xl">Statistics</h1>
-      <div className="live-info-grid mt-5">
+      <div className="mt-5 mb-5">
         <Statistics />
       </div>
     </div>
