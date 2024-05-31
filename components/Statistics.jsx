@@ -2,25 +2,17 @@
 import { useDiskSpaceDb } from "@/app/services/queries"
 import { useState } from "react"
 
-export default function Statistics({ initialData }) {
-  const [data, setData] = useState(initialData)
-  console.log(data)
-
+const Component = () => {
   return (
     <div>
       <h1>Data from Supabase</h1>
-      
     </div>
   )
 }
 
-export async function getServerSideProps() {
-    const diskSpaceQuery = useDiskSpaceDb
-    const { data, error, isLoading } = diskSpaceQuery
-
-  return {
-    props: {
-      data,
-    },
-  }
+export default function Statistics() {
+  const diskSpaceQuery = useDiskSpaceDb
+  const { data, error, isLoading } = diskSpaceQuery
+    console.log(data)
+  return <Component/>
 }
