@@ -15,7 +15,7 @@ export default function Statistics({ initialData }) {
 }
 
 export async function getServerSideProps() {
-    const diskSpaceQuery = useDiskSpaceDb()
+    const diskSpaceQuery = useDiskSpaceDb
     const { data, error, isLoading } = diskSpaceQuery
 
   return {
