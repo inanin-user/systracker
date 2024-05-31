@@ -1,5 +1,5 @@
 import { useFolderSize } from "@/app/services/queries"
-import React from "react"
+import React, { useState } from "react"
 import { BsFolder } from "react-icons/bs"
 
 const DetailModal = ({ open, onClose, currentPath, server }) => {
@@ -20,8 +20,9 @@ const DetailModal = ({ open, onClose, currentPath, server }) => {
       <div className="absolute bg-navy p-4 rounded-2xl shadow-lg w-80">
         <div className="flex gap-3">
           <BsFolder className="text-3xl mb-5" />
-          <h1>{server} {'>'}</h1> 
-
+          <h1>
+            {server} 
+          </h1>
         </div>
         <p>Full Path:</p>
         <p>{currentPath}</p>

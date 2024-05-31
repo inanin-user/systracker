@@ -28,7 +28,7 @@ body {
 }
 
 @media (min-width: 925px) {
-  .home {
+  .live-info-grid {
     @apply flex-1 flex justify-between gap-5;
   }
 }
