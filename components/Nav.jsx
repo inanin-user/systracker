@@ -10,7 +10,7 @@ const Nav = ({ data }) => {
 
   console.log(data)
   return (
-    <nav className="flex justify-between w-full mb-16 pt-3">
+    <nav className="flex justify-between w-full mb-16 pt-3 sticky top-0 bg-background-blue">
       <Link href="/" className="flex gap-3 flex-center">
         <Image
           src="/assets/images/inanin_orange2.png"
@@ -19,7 +19,7 @@ const Nav = ({ data }) => {
           height={30}
           className="object-contain"
         />
-        <p className="logo_text">SysTracker</p>
+        <p className="logo_text mt-[2px]">SysTracker</p>
       </Link>
 
       {/* Desktop Navigation */}

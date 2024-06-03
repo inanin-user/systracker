@@ -15,7 +15,8 @@ module.exports = {
         'primary-orange': '#FF5722',
         'dark-orange': '#9B3922',
         'navy': '#334756',
-        'dark-blue': '#001C30'
+        'dark-blue': '#001C30',
+        'background-blue': '#082032'
       }
     },
   },

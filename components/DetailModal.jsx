@@ -1,5 +1,4 @@
 import { useFolderSize } from "@/app/services/queries"
-import React, { useState } from "react"
 import { BsFolder } from "react-icons/bs"
 
 const DetailModal = ({ open, onClose, currentPath, server }) => {
@@ -12,6 +11,7 @@ const DetailModal = ({ open, onClose, currentPath, server }) => {
       className={`fixed inset-0 flex justify-center items-center transition-opacity ${
         open ? "opacity-100" : "opacity-0 pointer-events-none"
       }`}
+      style={{zIndex: '999'}}
     >
       <div
         className="fixed inset-0 bg-black opacity-50"

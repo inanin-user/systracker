@@ -13,6 +13,11 @@
   @apply max-sm:hidden font-satoshi font-semibold text-lg tracking-wide;
 }
 
+nav {
+  @apply px-6 sm:px-16 pb-3;
+  z-index: 999;
+}
+
 body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
@@ -21,7 +26,9 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+}
 
+main {
   @apply relative z-10 flex justify-center items-center flex-col max-w-7xl mx-auto sm:px-16 px-6;
 }
 
