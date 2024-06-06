@@ -13,10 +13,7 @@ export default async function SignUpPage() {
 
   return (
     
-      <form
-        className="flex flex-col gap-3 px-4 p-5 rounded-2xl mb-5"
-        style={{ backgroundColor: "#424769" }}
-      >
+    <form className="bg-gradient-to-r from-purple-900 to-indigo-700 signup-container flex flex-col gap-3 px-4 p-5 rounded-2xl mb-5">
         <div className="flex justify-center text-2xl font-bold">
         <h1>Sign-Up</h1>
         </div>
