@@ -1,39 +1,38 @@
 "use client"
 import { useEffect, useState } from "react"
 import { createClient } from "@/utils/supabase/client"
-import {
-  BarChart,
-  Bar,
-  Rectangle,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-  ResponsiveContainer,
-} from "recharts"
 import BarChartComponent from "./BarChartComponent"
+import BackupFolderSnapshot from "./snapshot/BackupFolderSnapshot"
 
 export default function Statistics() {
-  const [data, setData] = useState([])
+  const [diskSpaceData, setDiskSpaceData] = useState([])
+
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState(null)
 
   useEffect(() => {
     async function fetchData() {
       const supabase = createClient()
-      const { data, error } = await supabase.from("disk-space").select("*")
 
-      if (error) {
-        setError(error.message)
-      } else {
-        // Sort the data by created_at in ascending order
-        const sortedData = data.sort(
+      try {
+        const [diskSpaceResponse] = await Promise.all([
+          supabase.from("disk-space").select("*"),
+        ])
+
+        if (diskSpaceResponse.error) {
+          throw diskSpaceResponse.error
+        }
+
+        // Sort the disk-space data by created_at in ascending order
+        const sortedDiskSpaceData = diskSpaceResponse.data.sort(
           (a, b) => new Date(a.created_at) - new Date(b.created_at)
         )
-        setData(sortedData)
+        setDiskSpaceData(sortedDiskSpaceData)
+      } catch (error) {
+        setError(error.message)
+      } finally {
+        setIsLoading(false)
       }
-      setIsLoading(false)
     }
 
     fetchData()
@@ -47,7 +46,7 @@ export default function Statistics() {
     return <p>Error loading data: {error}</p>
   }
 
-  const transformedData = data
+  const transformedData = diskSpaceData
     .filter(
       (item) => item.data && item.data.some((drive) => drive.Drive === "D:")
     )
@@ -58,10 +57,10 @@ export default function Statistics() {
         freeSpaceGB: parseFloat(dDrive.FreeSpaceGB),
       }
     })
-  console.log(transformedData)
 
-  const freeSpaceArray = transformedData.map((item) => item.freeSpaceGB)
-  const createdAtArray = transformedData.map((item) => item.createdAt)
-
-  return <BarChartComponent data={transformedData} />
+  return (
+    <div>
+      <BarChartComponent data={transformedData} />
+    </div>
+  )
 }

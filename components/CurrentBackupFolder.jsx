@@ -13,7 +13,7 @@ const CurrentBackupFolder = ({ server }) => {
     )
   }
 
-  return <BackupFolder folderData={folderData} server={server} />
+  return <BackupFolder folderData={folderData} server={server}/>
 }
 
 export default CurrentBackupFolder

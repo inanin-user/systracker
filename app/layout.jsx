@@ -18,9 +18,12 @@ export default async function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <Nav data={data} />
+        
         <Providers>
-          <main className="app">{children}</main>
+          <main className="app">
+          <Nav data={data} />
+            {children}
+            </main>
         </Providers>
       </body>
     </html>

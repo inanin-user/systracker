@@ -1,5 +1,4 @@
 "use client"
-import { useFolderDetails } from "@/app/services/queries"
 import React, { useState } from "react"
 import { BsFolder } from "react-icons/bs"
 import DetailModal from "./DetailModal"
@@ -11,15 +10,22 @@ const FolderTree = ({ folders, open, setCurrentPath }) => {
         <li key={index}>
           <div className="flex gap-1">
             <BsFolder className="text-lg" style={{ marginTop: "2px" }} />
-            <p className="cursor-pointer" onClick={() => {
-              open()
-              setCurrentPath(folder.path)
-              }}>
+            <p
+              className={"cursor-pointer"}
+              onClick={() => {
+                open()
+                setCurrentPath(folder.path)
+              }}
+            >
               {folder.name}
             </p>
           </div>
           {folder.subfolders.folders.length > 0 && (
-            <FolderTree setCurrentPath={setCurrentPath} folders={folder.subfolders.folders} open={open} />
+            <FolderTree
+              setCurrentPath={setCurrentPath}
+              folders={folder.subfolders.folders}
+              open={open}
+            />
           )}
         </li>
       ))}
@@ -41,7 +47,12 @@ const BackupFolder = ({ folderData, server }) => {
         open={() => setDetailModal(true)}
         setCurrentPath={setCurrentPath}
       />
-      <DetailModal server={server} currentPath={currentPath} open={detailModal} onClose={() => setDetailModal(false)} />
+      <DetailModal
+        server={server}
+        currentPath={currentPath}
+        open={detailModal}
+        onClose={() => setDetailModal(false)}
+      />
     </div>
   )
 }
