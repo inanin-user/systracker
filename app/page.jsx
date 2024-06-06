@@ -4,7 +4,6 @@ import CurrentBackupFolder from "@/components/CurrentBackupFolder"
 import Statistics from "@/components/Statistics"
 import Snapshots from "@/components/snapshot/Snapshots"
 import {
-  Description,
   Dialog,
   DialogPanel,
   DialogTitle,

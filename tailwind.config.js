@@ -17,6 +17,9 @@ module.exports = {
         'navy': '#334756',
         'dark-blue': '#001C30',
         'background-blue': '#082032'
+      },
+      backgroundImage: {
+        'login-background': "url('/images/pxfuel.jpg')",
       }
     },
   },
