@@ -1,7 +1,8 @@
 import Nav from "@/components/Nav"
 import "@/styles/globals.css"
-import Providers from "./Providers"
+import Providers, { AuthProvider } from "./Providers"
 import { createClient } from "@/utils/supabase/server"
+import { useSession } from "next-auth/react"
 
 export const metadata = {
   title: "SysTracker",
@@ -12,18 +13,19 @@ export const metadata = {
 }
 
 export default async function RootLayout({ children }) {
-  const supabase = createClient()
-  const { data, error } = await supabase.auth.getUser()
+  // const supabase = createClient()
+  // const { data, error } = await supabase.auth.getUser()
 
   return (
     <html lang="en">
       <body>
-        
         <Providers>
-          <main className="app">
-          <Nav data={data} />
-            {children}
+          <AuthProvider>
+            <main className="app">
+              <Nav/>
+              {children}
             </main>
+          </AuthProvider>
         </Providers>
       </body>
     </html>

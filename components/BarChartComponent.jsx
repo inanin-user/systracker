@@ -13,7 +13,7 @@ import {
 export default function BarChartComponent({ data }) {
   return (
     <div className="pt-3 pb-3  rounded-xl bg-navy">
-      <h1 className="ml-5 mb-3 text-xl">Disk Space</h1>
+      <h1 className="ml-5 mb-3 text-xl">Disk Space (14:00 Everyday)</h1>
       <ResponsiveContainer width="100%" height={400}>
         <BarChart
           data={data}

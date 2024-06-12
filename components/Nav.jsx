@@ -1,14 +1,17 @@
 "use client"
 import { logout } from "@/app/logout/actions"
+import { LoginLink } from "@kinde-oss/kinde-auth-nextjs"
 import Image from "next/image"
 import Link from "next/link"
 import { useState } from "react"
 import { BsArrowRight, BsPersonCircle } from "react-icons/bs"
+import { signOut } from "next-auth/react"
+import { useSession } from "next-auth/react"
 
-const Nav = ({ data }) => {
+const Nav = () => {
   const [toggleDropdown, setToggleDropdown] = useState(false)
+  const { data: session } = useSession()
 
-  console.log(data)
   return (
     <nav className="flex justify-between w-full mb-16 pt-3 sticky top-0 bg-background-blue">
       <Link href="/" className="flex gap-3 flex-center">
@@ -24,7 +27,7 @@ const Nav = ({ data }) => {
 
       {/* Desktop Navigation */}
       <div>
-        {data.user ? (
+        {session?.user ? (
           <div className="relative flex gap-3 md:gap-5">
             <BsPersonCircle
               style={{ width: "37px", height: "37px" }}
@@ -52,16 +55,17 @@ const Nav = ({ data }) => {
                 className={`absolute w-52 rounded-xl bg-navy`}
               >
                 <div
-                  className="flex mt-3 mb-3"
-                  style={{ justifyContent: "space-evenly" }}
+                  className="flex-col text-center py-2"
                 >
-                  <h2 className="mt-1">{data.user.email}</h2>
+                  <h2 className="mt-1">{session.user.name}</h2>
+                  <h2 className="mt-1">{session.user.email}</h2>
                 </div>
                 <hr></hr>
                 <div
                   className={`flex cursor-pointer pt-3 pb-2 hover:bg-dark-orange rounded-b-xl`}
                   style={{ justifyContent: "space-around" }}
-                  onClick={() => logout()}
+                  // onClick={() => logout()}
+                  onClick={() => signOut()}
                 >
                   <BsArrowRight className="text-3xl" />
                   <h2 className="mr-5">Logout</h2>
@@ -74,6 +78,7 @@ const Nav = ({ data }) => {
             <Link className="white_btn" href="/login">
               Sign In
             </Link>
+            {/* <LoginLink className="white_btn">Sign in</LoginLink> */}
           </>
         )}
       </div>

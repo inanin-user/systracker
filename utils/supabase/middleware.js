@@ -1,6 +1,10 @@
 import { createServerClient } from "@supabase/ssr"
 import { NextResponse } from "next/server"
 
+export { default } from "next-auth/middleware"
+
+export const config = { matcher: ["/"] }
+
 export async function updateSession(request) {
   let response = NextResponse.next({
     request: {
